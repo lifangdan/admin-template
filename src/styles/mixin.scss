@@ -1,0 +1,40 @@
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+//盒子header标题部分
+@mixin titleHeader{
+  $height:50px;
+  height: $height;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: $height;
+}
+
+@mixin hei_linhei($height){
+  height:$height;
+  line-height:$height;
+}
+
+@for $i from 1 through 20 {
+  .mt#{$i*5}{ margin-top: 5px * $i;}
+  .mb#{$i*5}{ margin-bottom: 5px * $i;}
+  .ml#{$i*5}{ margin-left: 5px * $i;}
+  .mr#{$i*5}{ margin-right: 5px * $i;}
+  .pt#{$i*5}{ padding-top: 5px * $i;}
+  .pb#{$i*5}{ padding-bottom: 5px * $i;}
+  .pl#{$i*5}{ padding-left: 5px * $i;}
+  .pr#{$i*5}{ padding-right: 5px * $i;}
+}
+//字体大小
+@for $i from 0 through 20{
+  .font#{$i+10}{font-size: $i+10px;}
+}
