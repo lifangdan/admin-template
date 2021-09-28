@@ -16,8 +16,15 @@ export default {
   },
   userIdCompanyIdFindBacklog() {
     return request({
-      url: 'v1/manageapi/myself/userIdCompanyIdFindBacklog',
+      url: '/v1/manageapi/myself/userIdCompanyIdFindBacklog',
       method: 'get'
+    });
+  },
+  workOrderAuditAttachment(data) {
+    return request({
+      url: '/v1/manageapi/auditTask/workOrderAuditAttachment',
+      method: 'post',
+      data
     });
   },
 };

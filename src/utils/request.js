@@ -15,7 +15,8 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     if (getCookie('token')) {
-      config.headers['X-Token'] = getCookie('token'); // 让每个请求携带自定义token 请根据实际情况自行修改
+      config.headers['ManageUserAccessToken'] = getCookie('token'); // 让每个请求携带自定义token
+      config.headers['X-Token'] = getCookie('token'); // 让每个请求携带自定义token
     }
     if (localStorage.getItem('loginToken')) {
       config.headers['token'] = localStorage.getItem('loginToken'); // 登录接口需要传token

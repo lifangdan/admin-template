@@ -11,8 +11,11 @@ import './styles/index.scss';
 import 'babel-polyfill';
 
 Vue.prototype.$http = http;
-Vue.use(Element);
+Vue.use(Element,{ size: 'medium'});
 Vue.config.productionTip = false;
+
+import * as Utils from '@/utils'
+window.utils = Utils
 
 new Vue({
   router,

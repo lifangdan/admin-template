@@ -62,14 +62,14 @@
         padding-bottom: 30px;
         -webkit-transition: left .3s ease-in-out;
         transition: left .3s ease-in-out;
-        background: #f0f0f0;
+        background: #fff;
     }
 
     .content {
         width: auto;
         height: 100%;
         padding: 10px;
-        overflow-y: scroll;
+        overflow-y: auto;
         box-sizing: border-box;
     }
 

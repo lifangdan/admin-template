@@ -1,0 +1,18 @@
+
+.el-table__header-wrapper thead tr th {
+  background-color: #f1f1f1;
+  //border-right: 1px solid #ddd;
+  height: 60px;
+
+  .cell {
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+
+//表头与内容边框错位问题
+.el-table th.gutter{
+  display: table-cell!important;
+}
