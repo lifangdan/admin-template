@@ -68,6 +68,7 @@
         ],
         formData:{
           jobNumber: "CQDJ_404071541157",
+          userName:'李芳丹',
           pageParam: { count: 10, start: 1, offSet: 0 }
         }
       };
@@ -78,7 +79,6 @@
     created() {
       console.log("获取用户登录信息");
       console.log(this.userInfo);
-      // this.workOrderAuditAttachment();
     },
     methods: {
       workOrderAuditAttachment() {

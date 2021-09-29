@@ -49,7 +49,6 @@
     },
     computed: {},
     created() {
-      console.log(4555444);
       this.currentPage1 = this.currentPage;
       this.pageSize1 = this.pageSize;
     },

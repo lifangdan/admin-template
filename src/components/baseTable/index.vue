@@ -6,6 +6,7 @@
             stripe
             style="width: 100%">
             <el-table-column
+                v-if="isShowIndex"
                 label="序号"
                 width="60"
                 align="center"
@@ -89,6 +90,10 @@
       isRemote: {//是否需要请求接口,需要则必传requestURL参数，默认需要
         type: Boolean,
         default: true
+      },
+      isShowIndex: {//是否显示序号，默认不显示
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -107,10 +112,8 @@
         immediate: true,//必传
         handler(val) {
           if (val && !this.isRemote) {
-            console.log(44444444);
             this.allData = val;
             this.total = val.length;
-            // this.data = val.slice((this.currentPage-1)*this.pageSize,(this.currentPage)*this.pageSize);
           }
         }
       },
@@ -121,8 +124,6 @@
           this.form = window.utils.deepClone(val);
           this.currentPage = this.form.pageParam.start || 1;
           this.pageSize = this.form.pageParam.count || 10;
-          console.log(33333333);
-          console.log(this.form);
           this.getData();
         }
       }
@@ -133,25 +134,20 @@
     methods: {
       getData() {
         if (this.isRemote) {
-          console.log("请求了111111111");
           this.$http[this.requestURL](this.form)
             .then(res => {
               this.data = res.data;
               this.total = res.page.total;
             })
             .catch((err) => {
-              console.error(123456);
-              console.error(err);
+              console.log(err);
             });
         } else {
-          console.log("请求了22222222");
           this.data = this.allData.slice((this.currentPage - 1) * this.pageSize, (this.currentPage) * this.pageSize);
         }
 
       },
       updateCurrentPage(val) {
-        console.log("更新页码了");
-        console.log(val);
         this.form.pageParam.start = val;
         this.currentPage = val;
         this.getData();

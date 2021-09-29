@@ -8,7 +8,8 @@ const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL, // api的base_url
   timeout: 8000, // 请求超时时间
   headers: {
-    "Content-Type": "application/json; charset=UTF-8"
+    "Content-Type": "application/json; charset=UTF-8",
+    'X-Requested-With': 'XMLHttpRequest',
   }
 });
 
@@ -16,16 +17,17 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     if (getCookie("token")) {
-      config.headers["ManageUserAccessToken"] = getCookie("token"); // 让每个请求携带自定义token
-      config.headers["X-Token"] = getCookie("token"); // 让每个请求携带自定义token
+      config.headers["ManageUserAccessToken"] = getCookie("token");
+      // config.headers["X-Token"] = getCookie("token");
+      config.headers["Authorization"] = getCookie("token");
     }
     if (localStorage.getItem("loginToken")) {
-      config.headers["token"] = localStorage.getItem("loginToken"); // 登录接口需要传token
+      config.headers["token"] = localStorage.getItem("loginToken");// 登录接口需要传token，根据需要设置
     }
     return config;
   }, error => {
     console.log(error);
-    Promise.reject();
+    Promise.reject(error);
   }
 );
 
@@ -62,14 +64,18 @@ service.interceptors.response.use(
         return Promise.reject(response.data);
       }
     } else {
+      console.log('ddddddddddd')
       return Promise.reject(response);
     }
 
   }, error => {
+    console.log('eeeeeeeeee')
+    console.log(error)
     Message({
       type: "error",
       message: error.message
     });
+    return Promise.reject(error)
   }
 );
 
