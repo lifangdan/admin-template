@@ -68,7 +68,6 @@
         ],
         formData:{
           jobNumber: "CQDJ_404071541157",
-          userName:'李芳丹',
           pageParam: { count: 10, start: 1, offSet: 0 }
         }
       };
