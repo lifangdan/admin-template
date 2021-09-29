@@ -15,9 +15,8 @@
       ...mapGetters(['userInfo'])
     },
     created() {
-      console.log('我是首页：1111111111');
+      console.log("获取用户登录信息");
       console.log(this.userInfo);
-      console.log(getCookie('token'));
     }
   };
 </script>
