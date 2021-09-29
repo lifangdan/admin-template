@@ -76,7 +76,7 @@
       ...mapGetters(["userInfo"])
     },
     created() {
-      console.log("我是表格：11111111111");
+      console.log("获取用户登录信息");
       console.log(this.userInfo);
       // this.workOrderAuditAttachment();
     },

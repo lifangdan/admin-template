@@ -15,7 +15,6 @@ const user = {
     }
   },
   actions: {
-    // 删除token
     setToken({ commit }, token) {
       commit('SET_TOKEN', token);
     },
