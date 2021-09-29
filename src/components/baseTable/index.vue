@@ -5,6 +5,12 @@
             :border="border"
             stripe
             style="width: 100%">
+            <el-table-column
+                label="序号"
+                width="60"
+                align="center"
+                type="index"
+                :index="indexMethod"/>
             <el-table-column v-for="(item, index) in tableProps"
                              :key="index"
                              :prop="item.field"
@@ -83,11 +89,12 @@
       isRemote: {//是否需要请求接口,需要则必传requestURL参数，默认需要
         type: Boolean,
         default: true
-      },
+      }
     },
     data() {
       return {
         data: [],
+        allData: [],
         currentPage: 1,
         pageSize: 10,
         total: 0,
@@ -100,8 +107,10 @@
         immediate: true,//必传
         handler(val) {
           if (val && !this.isRemote) {
-            this.data = val;
+            console.log(44444444);
+            this.allData = val;
             this.total = val.length;
+            // this.data = val.slice((this.currentPage-1)*this.pageSize,(this.currentPage)*this.pageSize);
           }
         }
       },
@@ -109,10 +118,11 @@
         immediate: true,//必传
         deep: true,//必传
         handler(val) {
-          console.log(33333333)
           this.form = window.utils.deepClone(val);
           this.currentPage = this.form.pageParam.start || 1;
           this.pageSize = this.form.pageParam.count || 10;
+          console.log(33333333);
+          console.log(this.form);
           this.getData();
         }
       }
@@ -122,25 +132,32 @@
     },
     methods: {
       getData() {
-        console.log("请求接口了999999999");
-        if (!this.isRemote) {
-          return;
+        if (this.isRemote) {
+          console.log("请求了111111111");
+          this.$http[this.requestURL](this.form)
+            .then(res => {
+              this.data = res.data;
+              this.total = res.page.total;
+            })
+            .catch((err) => {
+              console.error(123456);
+              console.error(err);
+            });
+        } else {
+          console.log("请求了22222222");
+          this.data = this.allData.slice((this.currentPage - 1) * this.pageSize, (this.currentPage) * this.pageSize);
         }
-        console.log("请求接口了88888888888");
-        this.$http[this.requestURL](this.form)
-          .then(res => {
-            this.data = res.data;
-            this.total = res.page.total;
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+
       },
       updateCurrentPage(val) {
         console.log("更新页码了");
         console.log(val);
         this.form.pageParam.start = val;
+        this.currentPage = val;
         this.getData();
+      },
+      indexMethod(index) {
+        return this.pageSize * (this.currentPage - 1) + index + 1;
       }
     }
 

@@ -34,21 +34,24 @@
       };
     },
     watch: {
-      currentPage: {
-        immediate: true,
-        handler(val) {
-          this.currentPage1 = val;
-        }
-      },
-      pageSize: {
-        immediate: true,
-        handler(val) {
-          this.pageSize1 = val;
-        }
-      }
+      // currentPage: {
+      //   immediate: true,
+      //   handler(val) {
+      //     this.currentPage1 = val;
+      //   }
+      // },
+      // pageSize: {
+      //   immediate: true,
+      //   handler(val) {
+      //     this.pageSize1 = val;
+      //   }
+      // }
     },
     computed: {},
     created() {
+      console.log(4555444);
+      this.currentPage1 = this.currentPage;
+      this.pageSize1 = this.pageSize;
     },
     mounted() {
     },
@@ -57,6 +60,7 @@
         console.log(`每页 ${val} 条`);
       },
       handleCurrentChange(val) {
+        this.currentPage1 = val;
         this.$emit("updateCurrentPage", val);
         console.log(`当前页: ${val}`);
       }
