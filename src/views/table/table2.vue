@@ -4,7 +4,7 @@
             :tableData="data"
             :tableProps="tableProps"
             :isRemote="false"
-            :isShowPageination="true">
+            :isShowIndex="true">
             <template slot="date" slot-scope="scope">
                 <span class="blueColor">{{scope.row.date}}</span>
             </template>
@@ -118,12 +118,6 @@
             isSlot: true
           }
         ],
-        formData:{
-          pageParam: {
-            count: 5,
-            start: 1
-          }
-        }
       };
     },
 

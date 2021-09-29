@@ -83,7 +83,7 @@
         type: Boolean,
         default: true
       },
-      isShowPageination: {//是否展示分页，默认展示
+      isShowPageination: {//是否展示分页，默认展示,
         type: Boolean,
         default: true
       },
@@ -143,7 +143,12 @@
               console.log(err);
             });
         } else {
-          this.data = this.allData.slice((this.currentPage - 1) * this.pageSize, (this.currentPage) * this.pageSize);
+          if (this.isShowPageination) {
+            this.data = this.allData.slice((this.currentPage - 1) * this.pageSize, (this.currentPage) * this.pageSize);
+          } else {//不设置分页则一页显示全部数据
+            this.data = this.allData;
+          }
+
         }
 
       },
