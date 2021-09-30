@@ -25,7 +25,6 @@
         </Table>
     </div>
 </template>
-
 <script>
   import Table from "@/components/baseTable";
 
@@ -39,61 +38,61 @@
           {
             date: "2021-09-01",
             name: "姓名1",
+            num:1,
             address: "荔湾区"
           },
           {
             date: "2021-09-02",
             name: "姓名2",
+            num:2,
             address: "荔湾区"
           },
           {
             date: "2021-09-03",
             name: "姓名3",
+            num:3,
             address: "荔湾区"
           },
           {
             date: "2021-09-04",
             name: "姓名4",
-            address: "荔湾区"
-          },
-          {
-            date: "2021-09-03",
-            name: "姓名3",
+            num:4,
             address: "荔湾区"
           },
           {
             date: "2021-09-04",
             name: "姓名4",
-            address: "荔湾区"
-          },
-          {
-            date: "2021-09-03",
-            name: "姓名3",
+            num:4,
             address: "荔湾区"
           },
           {
             date: "2021-09-04",
             name: "姓名4",
-            address: "荔湾区"
-          },
-          {
-            date: "2021-09-03",
-            name: "姓名3",
+            num:4,
             address: "荔湾区"
           },
           {
             date: "2021-09-04",
             name: "姓名4",
-            address: "荔湾区"
-          },
-          {
-            date: "2021-09-03",
-            name: "姓名3",
+            num:4,
             address: "荔湾区"
           },
           {
             date: "2021-09-04",
             name: "姓名4",
+            num:4,
+            address: "荔湾区"
+          },
+          {
+            date: "2021-09-04",
+            name: "姓名4",
+            num:4,
+            address: "荔湾区"
+          },
+          {
+            date: "2021-09-04",
+            name: "姓名4",
+            num:4,
             address: "荔湾区"
           },
         ],
@@ -106,6 +105,10 @@
           {
             field: "name",
             label: "名字"
+          },
+          {
+            field: "num",
+            label: "数量"
           },
           {
             field: "address",

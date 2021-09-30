@@ -1,22 +1,22 @@
-import Cookies from 'js-cookie';
-
-const TokenKey = 'Admin-Token';
+import Cookies from "js-cookie";
 
 export function getCookie(name) {
   return Cookies.get(name);
 }
-/*
-* expires：有效期（天）
-* path：在这个地址的页面可用多少天
-* */
-export function setCookie(name, value, expires = 1) {
-  Cookies.set(name, value,
-    // {
-    //   expires,
-    //   path: process.env.VUE_APP_BASE_URL
-    // }
-  );
+
+export function setCookie(name, value, hours, domain, secure) {
+  let cdata = name + "=" + value;
+  if (hours) {
+    let d = new Date();
+    d.setHours(d.getHours() + hours);
+    cdata += "; expires=" + d.toGMTString();
+  }
+  cdata += "; path=" + process.env.VUE_APP_BASE_URL;
+  cdata += domain ? "; domain=" + domain : "";
+  cdata += secure ? "; secure=" + secure : "";
+  document.cookie = cdata;
 }
+
 export function removeCookie(name) {
   return Cookies.remove(name);
 }

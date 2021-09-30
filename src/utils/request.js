@@ -18,7 +18,7 @@ service.interceptors.request.use(
   config => {
     if (getCookie("token")) {
       config.headers["ManageUserAccessToken"] = getCookie("token");
-      // config.headers["X-Token"] = getCookie("token");
+      // config.headers["X-Token"] = getToken("token");
       config.headers["Authorization"] = getCookie("token");
     }
     if (localStorage.getItem("loginToken")) {

@@ -1,10 +1,12 @@
 <template>
     <div>
         <el-table
+            stripe
+            style="width: 100%"
             :data="data"
             :border="border"
-            stripe
-            style="width: 100%">
+            :show-summary="isShowSummary"
+            :summary-method="summarymethod">
             <el-table-column
                 v-if="isShowIndex"
                 label="序号"
@@ -70,7 +72,7 @@
         type: Object,
         default: function() {
           return {
-            pageParam: {
+            pageParam: {//接口统一的分页参数，根据需求设置
               count: 10,
               offSet: 0,
               pageOffSet: 0,
@@ -94,6 +96,13 @@
       isShowIndex: {//是否显示序号，默认不显示
         type: Boolean,
         default: false
+      },
+      isShowSummary: {//是否显示合计，默认不显示
+        type: Boolean,
+        default: true
+      },
+      summarymethod: {//合计显示设置，默认合计类型为数值的项。单独设置则传入该方法，返回一个数组，这个数组中的各项就会显示在合计行的各列中
+        type: Function,
       }
     },
     data() {

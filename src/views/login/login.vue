@@ -115,8 +115,7 @@
           .then(res => {
             if (res.success) {
               const data = res.data[0];
-              // this.$store.dispatch('setUserInfo', data)
-              setCookie('token', data.userAccessToken);
+              setCookie('token', data.userAccessToken,4);
               this.$store.dispatch('GetUserInfo', JSON.stringify(data));
               localStorage.removeItem('loginToken');
               this.$message.success('登录成功');

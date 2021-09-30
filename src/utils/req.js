@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Message } from 'element-ui';
-import { getToken } from '@/utils/auth';
+import { getCookie } from '@/utils/auth';
 
 // 创建axios实例
 const service = axios.create({
@@ -15,8 +15,8 @@ const service = axios.create({
 //request拦截器
 service.interceptors.request.use(
   config => {
-    if (getToken()) {
-      config.headers['X-Token'] = getToken(); // 让每个请求携带自定义token 请根据实际情况自行修改
+    if (getCookie()) {
+      config.headers['X-Token'] = getCookie(); // 让每个请求携带自定义token 请根据实际情况自行修改
     }
     if (localStorage.getItem('loginToken')) {
       config.headers['token'] = localStorage.getItem('loginToken'); // 登录接口需要传token
