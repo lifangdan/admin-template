@@ -1,6 +1,10 @@
 <template>
     <div>
-        <el-form :model="form" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form :model="form"
+                 :rules="rules"
+                 :inline="inline"
+                 ref="ruleForm"
+                 label-width="100px">
             <el-form-item :class="{'isInline':item.isInline}"
                           v-for="(item, index) in list"
                           v-if="visible[item.field]"
@@ -37,6 +41,20 @@
                                :value="i.value">
                     </el-option>
                 </el-select>
+                <!--日期-->
+                <el-date-picker
+                    v-if="item.type==='date'"
+                    v-model="form[item.field]"
+                    :value-format="item.valueFormat||'yyyy-MM-dd'"
+                    :clearable="item.clearable||true"
+                    :disabled="disable[item.field]||item.disabled||disabled"
+                    :style="{width:item.width||'400px'}"
+                    :type="item.isRange?'daterange':'date'"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期"
+                    placeholder="选择日期">
+                </el-date-picker>
                 <!--单选框-->
                 <el-radio-group v-if="item.type==='radio'"
                                 v-model="form[item.field]"
@@ -64,9 +82,8 @@
                       :name="item.field">
                 </slot>
             </el-form-item>
-
             <!--按钮-->
-            <el-form-item v-if="isButton">
+            <el-form-item v-if="isButton" :style="{'margin-left':inline?'100px':''}">
                 <el-button @click="groupBtnFn('ruleForm',item,item.handler)"
                            v-for="(item,index) in groupBtn"
                            :key="index"
@@ -88,7 +105,7 @@
       * formList，表格参数
       * field：必传，字段名；
       * label：必传，名称；
-      * type：表单类型，输入框-input,下拉选择框-select，单选框-radio；
+      * type：表单类型，输入框-input,下拉选择框-select，单选框-radio，多选框-check，文本域-textarea等等；
       * initVal：初始值,可是String、Number、Array、Boolean类型，初始值类型根据type来决定；
       * disabled:表单组件是否禁用；
       * clearable：是否显示清除按钮,默认显示；
@@ -101,12 +118,18 @@
         type: Array,
         required: true
       },
+      ruleForm: {//表单初始值
+        type: Object
+      },
+      disabled: {//表单是否禁用
+        type: Boolean,
+        default: false
+      },
       isButton: {//是否显示按钮
         type: Boolean,
         default: true
       },
-      ruleForm: Object,
-      groupBtn: {
+      groupBtn: {//按钮列表
         type: Array,
         default: function() {
           return [
@@ -115,13 +138,15 @@
               label: "提交"
             }
           ];
-
         }
+      },
+      inline: {//是否设置行内表单
+        type: Boolean,
+        default: false
       }
     },
     data() {
       return {
-        disabled: false,
         form: {},
         rules: {},
         list: [],
@@ -134,8 +159,6 @@
         deep: true,
         immediate: true,//必传
         handler(val) {
-          console.log(1111111);
-          console.log(val);
           if (!val || val.length < 1) {
             return false;
           }
@@ -157,16 +180,27 @@
             this.$set(this.visible, item.field, true);
             this.$set(this.disable, item.field, false);
           });
+          if (this.ruleForm) {
+            this.form = this.ruleForm;
+          }
         }
       },
-      ruleForm: {
+      // ruleForm: {
+      //   deep: true,
+      //   immediate: true,
+      //   handler(val) {
+      //     console.log(222222222);
+      //     console.log(val);
+      //     if (val) {
+      //       this.form = val;
+      //     }
+      //   }
+      // },
+      form: {
         deep: true,
-        immediate: true,
         handler(val) {
-          console.log(222222222);
-          console.log(val);
           if (val) {
-            this.form = val;
+            this.$emit("formChange", val);
           }
         }
       }
@@ -176,22 +210,26 @@
     },
     methods: {
       groupBtnFn(formName, item, callback) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            if (callback) {
-              callback && callback(item,this.$refs[formName]);
+        //编辑、取消、查询按钮不需要做校验
+        if(item.btnType==='edit'||item.btnType==='cancel'||item.btnType==='query'){
+          callback && callback(item, this.form);
+        }else{
+          this.$refs[formName].validate((valid) => {
+            if (valid) {
+              console.log("submit!!");
+              if (callback) {
+                //自定义按钮设置了回调
+                callback && callback(item, this.form);
+              } else {
+                this.$emit("formData", Object.assign({}, this.form));
+              }
             } else {
-              this.$emit("formData", Object.assign({}, this.form));
+              this.$emit("formData", null);
+              console.log("error submit!!");
+              return false;
             }
-          } else {
-            this.$emit("formData", null);
-            console.log("error submit!!");
-            return false;
-          }
-        });
-
-      },
-      submitForm(formName) {
+          });
+        }
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
