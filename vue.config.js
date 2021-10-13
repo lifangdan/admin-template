@@ -58,7 +58,7 @@ module.exports = {
     hotOnly: true, // 热更新
     proxy: {
       '/': {
-        target: 'http://10.250.151.117:9002/property-right-api',
+        target: 'http://192.168.1.103:9005/psfep',
         ws: false,
         changeOrigin: true
       }

@@ -102,7 +102,7 @@
         default: true
       },
       summarymethod: {//合计显示设置，默认合计类型为数值的项。单独设置则传入该方法，返回一个数组，这个数组中的各项就会显示在合计行的各列中
-        type: Function,
+        type: Function
       }
     },
     data() {

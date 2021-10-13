@@ -212,7 +212,7 @@
             minRows: 4,//设置文本域最小行数
             maxRows: 8,//设置文本域最大行数
             rules: [{
-              required: true, message: "请输入", trigger: "blur"
+              required: true, message: "请输入", trigger: "change"
             }]
           }
         ],

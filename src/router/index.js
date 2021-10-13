@@ -73,9 +73,9 @@ const routes = [
     children: [
       {
         path: "form",
-        name: "表单1",
+        name: "表单",
         meta: {
-          title: "表单1",
+          title: "表单",
           sideBar: true
         },
         component: () => import("@/views/form/index")

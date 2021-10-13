@@ -211,9 +211,9 @@
     methods: {
       groupBtnFn(formName, item, callback) {
         //编辑、取消、查询按钮不需要做校验
-        if(item.btnType==='edit'||item.btnType==='cancel'||item.btnType==='query'){
+        if (item.btnType === "edit" || item.btnType === "cancel" || item.btnType === "query") {
           callback && callback(item, this.form);
-        }else{
+        } else {
           this.$refs[formName].validate((valid) => {
             if (valid) {
               console.log("submit!!");
