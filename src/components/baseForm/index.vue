@@ -225,7 +225,6 @@
               }
             } else {
               this.$emit("formData", null);
-              console.log("error submit!!");
               return false;
             }
           });
