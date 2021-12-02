@@ -1,7 +1,7 @@
 <template>
     <div class="login-wrap">
         <div class="ms-login">
-            <div class="ms-title">商务厅后台管理系统</div>
+            <div class="ms-title">后台管理系统</div>
             <el-form :model="loginForm" :rules="rules" ref="login" label-width="0px" class="ms-content">
                 <el-form-item prop="loginName">
                     <el-input v-model="loginForm.loginName" placeholder="用户名" prefix-icon="el-icon-user">

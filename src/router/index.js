@@ -82,6 +82,26 @@ const routes = [
       }
     ]
   },
+  {
+    path: "/echart",
+    component: Layout,
+    name: "图表",
+    meta: {
+      title: "图表",
+      icon: "el-icon-tickets"
+    },
+    children: [
+      {
+        path: "index",
+        name: "图表",
+        meta: {
+          title: "图表",
+          sideBar: true
+        },
+        component: () => import("@/views/echart/index")
+      }
+    ]
+  },
 
   {
     path: "/login",
