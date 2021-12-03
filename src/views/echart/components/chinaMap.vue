@@ -130,6 +130,7 @@
             animationDurationUpdate: 1000,
             animationEasingUpdate: "cubicInOut",
             tooltip: {
+              show: false,
               trigger: "item", // hover触发器
               confine: true,
               formatter: (e) => {
@@ -140,12 +141,7 @@
               map: this.selectName,
               roam: true, //是否允许缩放
               zoom: 1,
-              label: {
-                emphasis: {
-                  show: true
-                }
-              },
-              itemStyle: {
+              itemStyle: {//设置区域样式
                 normal: {
                   borderColor: "#646a70",
                   borderWidth: 1,
@@ -162,15 +158,27 @@
                       offset: 1,
                       color: "rgba(147, 235, 248, .2)" // 100% 处的颜色
                     }],
-                    globalCoord: false // 缺省为 false
+                    globalCoord: false
                   },
                   shadowColor: "#00bc9d",//地图边框颜色
                   shadowOffsetX: -1,
                   shadowOffsetY: 1,
                   shadowBlur: 1
+                }
+                // emphasis:{//可以在里面设置，也可以在外面设置
+                //   scale: true,
+                //   areaColor: "#00bc9d",
+                //   focus:'self',//series,self
+                //   borderWidth: 0,
+                // }
+              },
+              emphasis: {//设置鼠标经过区域时的样式
+                focus: "self",
+                label: {
+                  color: "#fff"
                 },
-                emphasis: {
-                  areaColor: "#00bc9d",//鼠标经过时区域的颜色
+                itemStyle: {
+                  areaColor: "#00bc9d",
                   borderWidth: 0
                 }
               }
@@ -203,13 +211,21 @@
                   normal: {
                     formatter: "{b}",
                     position: "right",
-                    show: false // 是否显示公司名称
+                    show: true
                   }
                 },
                 itemStyle: {
                   normal: {
                     // 地图散点的颜色
                     color: "#ffa022"
+                  }
+                },
+                emphasis: {//设置散点的样式
+                  label: {
+                    color: "#fff"
+                  },
+                  itemStyle: {//设置经过散点的样式
+                    color: "#f56c6c"
                   }
                 },
                 animation: true,
@@ -226,7 +242,7 @@
         this.selectName = params.name;
         console.log(222222222);
         console.log(params);
-        this.drawMap()
+        this.drawMap();
       }
     }
   };

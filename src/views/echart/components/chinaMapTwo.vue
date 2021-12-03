@@ -70,8 +70,8 @@
           { name: "青海", value: randomData() }, { name: "西藏", value: randomData() },
           { name: "四川", value: randomData() }, { name: "宁夏", value: randomData() },
           { name: "海南", value: randomData() }, { name: "台湾", value: randomData() },
-          { name: "南海诸岛", value: 0 }, { name: "香港", value: randomData() },
-          { name: "澳门", value: randomData() }
+          { name: "香港", value: randomData() }, { name: "澳门", value: randomData() },
+          { name: "南海诸岛", value: 0 }
         ];
         const option = {
           // backgroundColor: '#FFFFFF',//地图背景颜色
@@ -93,7 +93,6 @@
               { start: 300, end: 400 }, { start: 200, end: 300 },
               { start: 100, end: 200 }, { start: 0, end: 100 }
             ],
-            // color: ['#fbc4c4','#f5dab1','#c2e7b0','#ffffff']
             color: ["#f56c6c", "#e6a23c", "#409eff", "#67c23a"],
             textStyle: {
               color: "#fff"
