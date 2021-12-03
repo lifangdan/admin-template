@@ -2,10 +2,18 @@
     <div class="echartBox">
         <el-row :gutter="20">
             <el-col :span="12">
-                <h4>地图</h4>
-                <MapEcharts/>
+                <h4>全国地图</h4>
+                <ChinaMap/>
             </el-col>
             <el-col :span="12">
+                <h4>广东地图</h4>
+                <GuangDongMap/>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20">
+            <el-col :span="12">
+                <h4>全国地图</h4>
+                <ChinaMapTwo/>
             </el-col>
         </el-row>
 
@@ -13,10 +21,15 @@
 </template>
 
 <script>
-  import MapEcharts from "./components/map";
+  import GuangDongMap from "./components/GuangDongMap";
+  import ChinaMap from "./components/chinaMap";
+  import ChinaMapTwo from "./components/chinaMapTwo";
+
   export default {
     components: {
-      MapEcharts
+      ChinaMap,
+      GuangDongMap,
+      ChinaMapTwo
     }
   };
 </script>

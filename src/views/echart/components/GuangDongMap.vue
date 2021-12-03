@@ -5,6 +5,7 @@
 <script>
   import * as echarts from "echarts";
   import GuangDong from "echarts/map/json/province/guangdong";
+  import China from "echarts/map/json/china";
 
   export default {
     data() {
@@ -130,7 +131,7 @@
 <style scoped lang="scss">
     .echartBox {
         #map {
-            height: 500px;
+            height: 600px;
             width: 100%;
             background-color: #26404b;
         }

@@ -88,14 +88,14 @@ const routes = [
     name: "图表",
     meta: {
       title: "图表",
-      icon: "el-icon-tickets"
+      icon: "el-icon-place"
     },
     children: [
       {
         path: "index",
-        name: "图表",
+        name: "ECharts地图",
         meta: {
-          title: "图表",
+          title: "ECharts地图",
           sideBar: true
         },
         component: () => import("@/views/echart/index")
