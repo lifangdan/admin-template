@@ -93,9 +93,9 @@ const routes = [
     children: [
       {
         path: "index",
-        name: "ECharts地图",
+        name: "ECharts图",
         meta: {
-          title: "ECharts地图",
+          title: "ECharts图",
           sideBar: true
         },
         component: () => import("@/views/echart/index")
