@@ -26,6 +26,12 @@
                 <Pie/>
             </el-col>
         </el-row>
+        <el-row :gutter="20">
+            <el-col :span="12">
+                <h4>雷达图</h4>
+                <Radar/>
+            </el-col>
+        </el-row>
 
     </div>
 </template>
@@ -36,6 +42,7 @@
   import ChinaMap from "./components/chinaMap";
   import ChinaMapTwo from "./components/chinaMapTwo";
   import Pie from "./components/pie";
+  import Radar from "./components/radar";
 
   export default {
     components: {
@@ -43,7 +50,8 @@
       GuangDongMapTwo,
       GuangDongMap,
       ChinaMapTwo,
-      Pie
+      Pie,
+      Radar
     }
   };
 </script>
