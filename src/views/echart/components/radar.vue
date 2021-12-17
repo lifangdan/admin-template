@@ -4,93 +4,113 @@
 
 <script>
   import * as echarts from "echarts";
+
   export default {
     data() {
       return {
         myChart: null
-      }
+      };
     },
     created() {
       this.$nextTick(() => {
-        this.init()
-      })
+        this.init();
+      });
     },
     methods: {
       init() {
         if (this.myChart) {
-          this.myChart.dispose()
+          this.myChart.dispose();
         }
-        this.myChart = echarts.init(this.$refs.chart)
+        this.myChart = echarts.init(this.$refs.chart);
         const option = {
-          color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
-
-          legend: {},
-          radar: [
-
-            {
-              indicator: [
-                { text: 'Indicator1', max: 150 },
-                { text: 'Indicator2', max: 150 },
-                { text: 'Indicator3', max: 150 },
-                { text: 'Indicator4', max: 120 },
-                { text: 'Indicator5', max: 108 },
-                { text: 'Indicator6', max: 72 }
-              ],
-              center: ['50%', '50%'],
-              radius: 120,
-              axisName: {
-                color: '#387dfe',
-                backgroundColor: '#666',
-                borderRadius: 3,
-                padding: [3, 5]
+          tooltip: {
+            trigger: "item",
+            axisPointer: {
+              type: "shadow"
+            },
+            padding: [5, 10],
+            textStyle: {
+              fontSize: 13,
+              color: "#fff"
+            },
+            backgroundColor: "rgba(0,0,0,0.7)",
+            borderWidth: 0
+          },
+          legend: {
+            orient: "vertical",
+            right: 20,
+            bottom: 20,
+            itemWidth: 10,
+            itemHeight: 10,
+            textStyle: {
+              color: "#4e719a"
+            },
+            data: ["省属", "地市"]
+          },
+          color: ["#387dfe", "#15dbe7"],
+          radar: {
+            indicator: [
+              { name: "公司制", max: 1000, color: "#4e719a" },
+              { name: "合伙制", max: 1000, color: "#4e719a" },
+              { name: "特殊登记", max: 1000, color: "#4e719a" },
+              { name: "其他", max: 1000, color: "#4e719a" }
+            ],
+            center: ["50%", "50%"],
+            radius: "70%",
+            axisLabel: {
+              color: "#fff"
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: "#192b5f"
+              }
+            },
+            splitArea: {
+              areaStyle: {
+                color: "rgba(255, 255, 255, 0)"
+              },
+              lineStyle: {
+                color: "#192b5f"
+              }
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: ["#192b5f"]
               }
             }
-          ],
+
+          },
           series: [
             {
-              type: 'radar',
-              radarIndex: 0,
+              name: "",
+              type: "radar",
               data: [
                 {
-                  value: [120, 118, 130, 100, 99, 70],
-                  name: 'Data C',
-                  symbol: 'rect',
-                  symbolSize: 12,
-                  lineStyle: {
-                    type: 'dashed'
-                  },
-                  label: {
-                    show: true,
-                    formatter: function (params) {
-                      return params.value;
-                    }
+                  value: [800, 500, 620, 530, 550, 680, 420],
+                  name: "省属",
+                  areaStyle: {
+                    color: "#387dfe",
+                    opacity: 0.3
                   }
                 },
                 {
-                  value: [100, 93, 50, 90, 70, 60],
-                  name: 'Data D',
+                  value: [600, 940, 880, 460, 720, 310, 900],
+                  name: "地市",
                   areaStyle: {
-                    color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                      {
-                        // color: 'rgba(255, 145, 124, 0.1)',
-                        color: '#333',
-                        offset: 0
-                      },
-                      {
-                        color: '#fff',
-                        offset: 1
-                      }
-                    ])
+                    color: "#15dbe7",
+                    opacity: 0.3
                   }
                 }
               ]
             }
           ]
         };
-        this.myChart.setOption(option)
+        this.myChart.setOption(option);
       }
     }
-  }
+  };
 </script>
 
 <style scoped>

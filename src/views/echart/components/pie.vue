@@ -53,49 +53,43 @@ export default {
         title: {
           text: "累计户数",
           subtext: "186",
-          textAlign: "center",
-          left: "49.5%",
-          top: "46%",
+          textAlign: 'center',
+          left: '44.5%',
+          top: '46%',
           textStyle: {
-            color: "#4e719a",
-            fontSize: 14,
+            color: '#5a7097',
+            fontSize: 13
           },
           subtextStyle: {
-            color: "#007eff",
-            fontSize: 18,
-            fontWeight: "bold",
-          },
+            color: '#387dfe',
+            fontSize: 24,
+            fontWeight: 'bold'
+          }
         },
         legend: {
-          orient: "vertical",
-          right: "0%",
-          bottom: "5%",
+          orient: 'vertical',
+          right: '7%',
+          top: '35%',
+          itemWidth: 10,
+          itemHeight: 10,
           textStyle: {
-            color: "#4e719a",
+            color: '#4e719a'
           },
-          data: ["省内", "省外", "港澳台", "境外"],
+          data: ["省内", "省外", "境外"],
         },
         series: [
           {
-            name: "pie1",
-            type: "pie",
-            // selectedMode: "multiple",
-            center: ["50%", "50%"], //饼图的中心
-            radius: ["24%", "49%"],
+            name: 'pie1',//内圆
+            type: 'pie',
+            center: ['45%', '50%'],//饼图的中心
+            radius: [46, 71],
             label: {
-              show: false,
+              show: false
             },
-            // labelLine: {
-            //   show: false
-            // },
-            color: ["#007eff", "#394c9a", "#00a97b", "#00a1b1"],
+            color: ['#387dfe', '#15dbe7', '#5864c5'],
             itemStyle: {
-              borderWidth: 10,
-              borderColor: "#080b26",
-            },
-            emphasis: {
-              scaleSize: 15,
-              scale: true,
+              borderWidth: 2,
+              borderColor: '#080b26'
             },
             data: [
               { value: 100, name: "省内" },
@@ -105,65 +99,17 @@ export default {
             ],
           },
           {
-            name: "pie2",
-            type: "pie",
-            center: ["50%", "50%"], //饼图的中心
-            radius: ["50%", "80%"],
+            name: 'pie2',//外圆
+            type: 'pie',
+            center: ['45%', '50%'],//饼图的中心
+            radius: [72, 105],
             label: {
-              show: false,
+              show: false
             },
-            // labelLine: {
-            //   length: 30
-            // },
-            // label: {
-            //   formatter: "{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ",
-            //   backgroundColor: "#F6F8FC",
-            //   borderColor: "#8C8D8E",
-            //   borderWidth: 1,
-            //   borderRadius: 4,
-            //   rich: {
-            //     a: {
-            //       color: "#6E7079",
-            //       lineHeight: 22,
-            //       align: "center"
-            //     },
-            //     hr: {
-            //       borderColor: "#8C8D8E",
-            //       width: "100%",
-            //       borderWidth: 1,
-            //       height: 0
-            //     },
-            //     b: {
-            //       color: "#4C5058",
-            //       fontSize: 14,
-            //       fontWeight: "bold",
-            //       lineHeight: 33
-            //     },
-            //     per: {
-            //       color: "#fff",
-            //       backgroundColor: "#4C5058",
-            //       padding: [3, 4],
-            //       borderRadius: 4
-            //     }
-            //   }
-            // },
-            color: [
-              "#3899ff",
-              "#0062ff",
-              "#5161a4",
-              "#243a8d",
-              "#00af86",
-              "#008f68",
-              "#00a7b8",
-              "#008a9b",
-            ],
+            color: ['#6198fe', '#0f62fe', '#38e3ed', '#12b8c2', '#7680d0', '#3f4cb5'],
             itemStyle: {
-              borderWidth: 10,
-              borderColor: "#080b26",
-            },
-            emphasis: {
-              scaleSize: 15,
-              scale: true,
+              borderWidth: 2,
+              borderColor: '#080b26'
             },
             data: [
               { value: 50, name: "省属" },
